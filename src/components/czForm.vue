@@ -133,6 +133,13 @@
     >
       <el-color-picker v-model="attrsObj.color" />
     </el-form-item>
+    <el-form-item
+      v-if="attrsObjKeys.includes('backgroundColor')"
+      label="背景颜色"
+      prop="backgroundColor"
+    >
+      <el-color-picker v-model="attrsObj.backgroundColor" />
+    </el-form-item>
     <el-form-item label="是否显示边框" prop="border">
       <el-checkbox v-model="attrsObj.showBorder"></el-checkbox>
     </el-form-item>
@@ -181,12 +188,20 @@
         :min="0"
       ></el-input-number>
     </el-form-item>
+
     <el-form-item
-      v-if="attrsObjKeys.includes('backgroundColor')"
-      label="背景颜色"
-      prop="backgroundColor"
+      v-if="attrsObjKeys.includes('cursor')"
+      label="光标"
+      prop="cursor"
     >
-      <el-color-picker v-model="attrsObj.backgroundColor" />
+      <el-select v-model="attrsObj.cursor" style="width: 50%">
+        <el-option
+          v-for="opt in cursorOptions"
+          :key="opt"
+          :label="opt"
+          :value="opt"
+        ></el-option>
+      </el-select>
     </el-form-item>
   </el-form>
 </template>
@@ -203,5 +218,6 @@ import {
   textAlignOptions,
   boxSizingOptions,
   alignItemsOptions,
+  cursorOptions,
 } from "./data";
 </script>

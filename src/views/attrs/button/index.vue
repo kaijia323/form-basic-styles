@@ -30,6 +30,7 @@ const buttonAttrs = ref({
   marginBottom: 0,
   marginLeft: 0,
   alignItems: "start",
+  cursor: "pointer",
 });
 
 const buttonStyle = computed(() => {
