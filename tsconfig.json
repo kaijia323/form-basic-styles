@@ -1,11 +1,4 @@
 {
-  "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["src/*"],
-      "/@/*": ["src/*"]
-    }
-  },
   "files": [],
   "references": [
     {
