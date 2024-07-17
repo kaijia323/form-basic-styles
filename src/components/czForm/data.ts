@@ -93,3 +93,16 @@ export const cursorOptions = [
   "zoom-in",
   "zoom-out",
 ];
+
+export type TCzFormModel = {
+  width?: number | string;
+  height?: number | string;
+  boxSizing?: string;
+  borderStyle?: string;
+  fontWeight?: string;
+  fontStyle?: string;
+  textAlign?: string;
+  alignItems?: string;
+  cursor?: string;
+  [key: string]: any;
+};

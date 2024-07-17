@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
-import czForm from "../../../components/czForm.vue";
+import type { TCzFormModel } from "@/components/czForm/data";
+import czForm from "@/components/czForm/index.vue";
 
-const buttonAttrs = ref({
+const buttonAttrs = ref<TCzFormModel>({
   // width: "fit-content",
   // height: "fit-content",
   width: 80,

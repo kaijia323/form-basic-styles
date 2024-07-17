@@ -7,8 +7,7 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
-    CzForm: typeof import('./src/components/czForm.vue')['default']
-    ElButton: typeof import('element-plus/es')['ElButton']
+    CzForm: typeof import('./src/components/czForm/index.vue')['default']
     ElCheckbox: typeof import('element-plus/es')['ElCheckbox']
     ElColorPicker: typeof import('element-plus/es')['ElColorPicker']
     ElForm: typeof import('element-plus/es')['ElForm']

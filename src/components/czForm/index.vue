@@ -207,7 +207,8 @@
 </template>
 
 <script lang="ts" setup>
-const attrsObj: any = defineModel();
+import type { TCzFormModel } from "./data";
+const attrsObj: TCzFormModel = defineModel();
 
 const attrsObjKeys = Object.keys(attrsObj.value);
 console.log(attrsObjKeys, "KEYS");

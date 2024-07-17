@@ -16,26 +16,36 @@
       </div>
     </aside>
     <main>
-      <ButtonCom v-if="selected === 'button'" />
+      <component :is="selectedCom"></component>
     </main>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ref } from "vue";
+// import { ref, computed } from "vue";
 import ButtonCom from "./button/index.vue";
+import ParagraphCom from "./paragraph/index.vue";
 const eleArrs = [
   {
     type: "button",
     text: "按钮",
+    component: ButtonCom,
   },
   {
     type: "p",
     text: "段落",
+    component: ParagraphCom,
   },
 ];
 
 const selected = ref("button");
+const selectedCom = computed(() => {
+  console.log(
+    eleArrs.find((ele) => ele.type === selected.value)?.component,
+    "com"
+  );
+  return eleArrs.find((ele) => ele.type === selected.value)?.component;
+});
 </script>
 
 <style lang="scss" scoped>
