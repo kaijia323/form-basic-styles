@@ -4,7 +4,9 @@
       <ASideMenus></ASideMenus>
     </el-aside>
     <el-main>
-      <ButtonCom :styles="styles" />
+      <router-view v-slot="{ Component }">
+        <component ref="componentRef" :is="Component"></component>
+      </router-view>
     </el-main>
     <el-aside class="config-aside">
       <el-scrollbar>
@@ -15,12 +17,14 @@
 </template>
 
 <script lang="ts" setup>
-import ButtonCom from "./button/index.vue";
 import CzForm from "@/components/czForm.vue";
-import { useButtonAttrs } from "./button/useButtonAttrs";
 import ASideMenus from "@/components/ASideMenus/ASideMenus.vue";
 
-const { attrs, styles } = useButtonAttrs();
+const componentRef = ref<{
+  attrs?: Record<string, any>;
+} | null>(null);
+
+const attrs = computed(() => componentRef.value?.attrs || {});
 </script>
 
 <style lang="scss" scoped>

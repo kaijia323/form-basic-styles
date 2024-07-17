@@ -194,8 +194,8 @@
 <script lang="ts" setup>
 const attrsObj: any = defineModel();
 
-const attrsObjKeys = Object.keys(attrsObj.value);
-console.log(attrsObjKeys, "KEYS");
+const attrsObjKeys = computed(() => Object.keys(attrsObj.value));
+
 import {
   borderStyleOptions,
   fontWeightOptions,
