@@ -5,7 +5,11 @@
     </el-aside>
     <el-main>
       <router-view v-slot="{ Component }">
-        <component ref="componentRef" :is="Component"></component>
+        <component
+          ref="componentRef"
+          :is="Component"
+          class="ele-style-container"
+        ></component>
       </router-view>
     </el-main>
     <el-aside class="config-aside">
@@ -17,11 +21,12 @@
 </template>
 
 <script lang="ts" setup>
-import CzForm from "@/components/czForm.vue";
-import ASideMenus from "@/components/ASideMenus/ASideMenus.vue";
+// import CzForm from "@/components/czForm/index.vue";
+// import ASideMenus from "@/components/ASideMenus/ASideMenus.vue";
+import type { TElementAttrs } from "@/components/czForm/data";
 
 const componentRef = ref<{
-  attrs?: Record<string, any>;
+  attrs?: TElementAttrs;
 } | null>(null);
 
 const attrs = computed(() => componentRef.value?.attrs || {});

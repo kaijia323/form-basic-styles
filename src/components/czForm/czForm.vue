@@ -43,24 +43,24 @@
       <el-input-number v-model="attrsObj.height" :min="0"></el-input-number>
     </el-form-item>
     <el-form-item
-      v-if="attrsObjKeys.includes('paddingTop')"
+      v-if="attrsObjKeys.includes('padding')"
       label="内边距"
       prop="padding"
     >
-      <el-input-number v-model="attrsObj.paddingTop" />
-      <el-input-number v-model="attrsObj.paddingRight" />
-      <el-input-number v-model="attrsObj.paddingBottom" />
-      <el-input-number v-model="attrsObj.paddingLeft" />
+      <el-input-number v-model="attrsObj.paddingTop" :min="0" />
+      <el-input-number v-model="attrsObj.paddingRight" :min="0" />
+      <el-input-number v-model="attrsObj.paddingBottom" :min="0" />
+      <el-input-number v-model="attrsObj.paddingLeft" :min="0" />
     </el-form-item>
     <el-form-item
-      v-if="attrsObjKeys.includes('marginTop')"
+      v-if="attrsObjKeys.includes('margin')"
       label="外边距"
       prop="margin"
     >
-      <el-input-number v-model="attrsObj.marginTop" />
-      <el-input-number v-model="attrsObj.marginRight" />
-      <el-input-number v-model="attrsObj.marginBottom" />
-      <el-input-number v-model="attrsObj.marginLeft" />
+      <el-input-number v-model="attrsObj.marginTop" :min="0" />
+      <el-input-number v-model="attrsObj.marginRight" :min="0" />
+      <el-input-number v-model="attrsObj.marginBottom" :min="0" />
+      <el-input-number v-model="attrsObj.marginLeft" :min="0" />
     </el-form-item>
     <el-form-item
       v-if="attrsObjKeys.includes('fontSize')"
@@ -188,14 +188,25 @@
     >
       <el-color-picker v-model="attrsObj.backgroundColor" />
     </el-form-item>
+    <el-form-item
+      v-if="attrsObjKeys.includes('cursor')"
+      label="光标"
+      prop="cursor"
+    >
+      <el-select v-model="attrsObj.cursor" style="width: 50%">
+        <el-option
+          v-for="opt in cursorOptions"
+          :key="opt"
+          :label="opt"
+          :value="opt"
+        ></el-option>
+      </el-select>
+    </el-form-item>
   </el-form>
 </template>
 
 <script lang="ts" setup>
-const attrsObj: any = defineModel();
-
-const attrsObjKeys = computed(() => Object.keys(attrsObj.value));
-
+import type { TElementAttrs } from "@/components/czForm/data";
 import {
   borderStyleOptions,
   fontWeightOptions,
@@ -203,5 +214,32 @@ import {
   textAlignOptions,
   boxSizingOptions,
   alignItemsOptions,
+  cursorOptions,
 } from "./data";
+
+const attrsObj: TElementAttrs = defineModel();
+const attrsObjKeys = ref<string[]>([]);
+
+watch(
+  () => attrsObj.value,
+  (val) => {
+    if (val) {
+      attrsObjKeys.value = Object.keys(val);
+      if (attrsObjKeys.value.includes("padding")) {
+        ["paddingTop", "paddingRight", "paddingBottom", "paddingLeft"].forEach(
+          (key) => {
+            attrsObj.value[key] = attrsObj.value.padding;
+          }
+        );
+      }
+      if (attrsObjKeys.value.includes("margin")) {
+        ["marginTop", "marginRight", "marginBottom", "marginLeft"].forEach(
+          (key) => {
+            attrsObj.value[key] = attrsObj.value.margin;
+          }
+        );
+      }
+    }
+  }
+);
 </script>

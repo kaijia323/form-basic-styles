@@ -10,12 +10,10 @@ defineExpose({
 
 <template>
   <div class="button-style-container">
-    <div class="left-container">
-      <button :style="styles">按钮样式</button>
-    </div>
+    <button :style="styles">按钮样式</button>
   </div>
 </template>
 
 <style lang="scss" scoped>
-@import "./index.scss";
+// @import "./index.scss";
 </style>

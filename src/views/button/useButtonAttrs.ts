@@ -1,5 +1,6 @@
+import type { TElementAttrs } from "@/components/czForm/data";
 export const useButtonAttrs = () => {
-  const attrs = ref({
+  const attrs = ref<TElementAttrs>({
     // width: "fit-content",
     // height: "fit-content",
     width: 80,
@@ -17,29 +18,32 @@ export const useButtonAttrs = () => {
     letterSpacing: 0,
     textAlign: "center",
     textIndent: 0,
-    boxSizing: "border-box",
-    paddingTop: 0,
-    paddingRight: 0,
-    paddingBottom: 0,
-    paddingLeft: 0,
-    marginTop: 0,
-    marginRight: 0,
-    marginBottom: 0,
-    marginLeft: 0,
+    boxSizing: "content-box",
+    padding: 5,
+    margin: 5,
     alignItems: "start",
+    cursor: "pointer",
   });
 
   const styles = computed<Record<string, any>>(() => {
     // 边框样式
     let border = "none";
     if (attrs.value.showBorder) {
-      border = `${attrs.value.borderWidth}px ${attrs.value.borderStyle} ${attrs.value.borderColor}`;
+      border = `${turnPx(attrs.value.borderWidth)} ${attrs.value.borderStyle} ${
+        attrs.value.borderColor
+      }`;
     }
     // 内边距
-    const padding = `${attrs.value.paddingTop}px ${attrs.value.paddingRight}px ${attrs.value.paddingBottom}px ${attrs.value.paddingLeft}px`;
+    const padding = `${turnPx(attrs.value?.paddingTop)} ${turnPx(
+      attrs.value?.paddingRight
+    )} ${turnPx(attrs.value?.paddingBottom)} ${turnPx(
+      attrs.value?.paddingLeft
+    )}`;
 
     // 外边距
-    const margin = `${attrs.value.marginTop}px ${attrs.value.marginRight}px ${attrs.value.marginBottom}px ${attrs.value.marginLeft}px`;
+    const margin = `${turnPx(attrs.value?.marginTop)} ${turnPx(
+      attrs.value?.marginRight
+    )} ${turnPx(attrs.value?.marginBottom)} ${turnPx(attrs.value?.marginLeft)}`;
 
     return {
       ...attrs.value,

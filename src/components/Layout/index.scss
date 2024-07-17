@@ -4,11 +4,23 @@
   height: 100vh;
   display: flex;
 
-  .cz-aside > ul {
+  .cz-aside {
+    width: 200px;
     height: 100vh;
+
+    > ul {
+      height: 100%;
+    }
+  }
+
+  .ele-style-container {
+    flex: 1;
+    display: flex;
+    overflow: hidden;
   }
 
   .config-aside {
+    width: 420px;
     border-left: 1px solid var(--el-menu-border-color);
   }
 }

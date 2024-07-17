@@ -2,8 +2,8 @@
 import { useMenusStore } from "@/pinia";
 import SingleMenu from "./SingleMenu.vue";
 
-const { menus } = useMenusStore();
 const route = useRoute();
+const { menus } = useMenusStore();
 
 const defaultActive = computed(() => route.path);
 </script>
