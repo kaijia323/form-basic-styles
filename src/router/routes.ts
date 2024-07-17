@@ -4,12 +4,16 @@ export const routes: RouteRecordRaw[] = [
   {
     path: "/",
     name: "Home",
-    redirect: "/attrs",
+    redirect: "/button",
     children: [
       {
-        path: "/attrs",
-        name: "Attrs",
+        path: "button",
+        name: "Button",
         component: () => import("../views/attrs/index.vue"),
+        meta: {
+          menuType: "MENU",
+          menuTitle: "按钮 Button",
+        },
       },
     ],
   },
