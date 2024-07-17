@@ -1,7 +1,11 @@
 <script setup lang="ts">
-defineProps<{
-  styles: Record<string, any>;
-}>();
+import { useButtonAttrs } from "@/views/button/useButtonAttrs";
+
+const { attrs, styles } = useButtonAttrs();
+
+defineExpose({
+  attrs,
+});
 </script>
 
 <template>
