@@ -1,0 +1,14 @@
+.attrs-wrapper {
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+
+  .cz-aside > ul {
+    height: 100vh;
+  }
+
+  .config-aside {
+    border-left: 1px solid var(--el-menu-border-color);
+  }
+}
