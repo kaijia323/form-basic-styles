@@ -28,7 +28,13 @@
       "element-plus/global.d.ts",
       "./auto-imports.d.ts",
       "./components.d.ts"
-    ]
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ],
+    }
   },
   "include": [
     "src/**/*.ts",
