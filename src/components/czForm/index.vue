@@ -43,7 +43,7 @@
       <el-input-number v-model="attrsObj.height" :min="0"></el-input-number>
     </el-form-item>
     <el-form-item
-      v-if="attrsObjKeys.includes('paddingTop')"
+      v-if="attrsObjKeys.includes('padding')"
       label="内边距"
       prop="padding"
     >
@@ -53,7 +53,7 @@
       <el-input-number v-model="attrsObj.paddingLeft" />
     </el-form-item>
     <el-form-item
-      v-if="attrsObjKeys.includes('marginTop')"
+      v-if="attrsObjKeys.includes('margin')"
       label="外边距"
       prop="margin"
     >
@@ -208,10 +208,6 @@
 
 <script lang="ts" setup>
 import type { TCzFormModel } from "./data";
-const attrsObj: TCzFormModel = defineModel();
-
-const attrsObjKeys = Object.keys(attrsObj.value);
-console.log(attrsObjKeys, "KEYS");
 import {
   borderStyleOptions,
   fontWeightOptions,
@@ -221,4 +217,27 @@ import {
   alignItemsOptions,
   cursorOptions,
 } from "./data";
+
+const attrsObj: TCzFormModel = defineModel();
+const attrsObjKeys = Object.keys(attrsObj.value);
+
+onMounted(() => {
+  const paddingArr = [
+    "paddingTop",
+    "paddingRight",
+    "paddingBottom",
+    "paddingLeft",
+  ];
+  const marginArr = ["marginTop", "marginRight", "marginBottom", "marginLeft"];
+  if (attrsObj.value.padding) {
+    paddingArr.forEach((item) => {
+      attrsObj.value[item] = attrsObj.value.padding;
+    });
+  }
+  if (attrsObj.value.margin) {
+    marginArr.forEach((item) => {
+      attrsObj.value[item] = attrsObj.value.margin;
+    });
+  }
+});
 </script>

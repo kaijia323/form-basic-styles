@@ -95,9 +95,9 @@ export const cursorOptions = [
 ];
 
 export type TCzFormModel = {
+  boxSizing?: string;
   width?: number | string;
   height?: number | string;
-  boxSizing?: string;
   borderStyle?: string;
   fontWeight?: string;
   fontStyle?: string;

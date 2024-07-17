@@ -2,6 +2,7 @@
 import { ref, computed } from "vue";
 import type { TCzFormModel } from "@/components/czForm/data";
 import czForm from "@/components/czForm/index.vue";
+import { turnPx } from "@/utils/common.ts";
 
 const buttonAttrs = ref<TCzFormModel>({
   // width: "fit-content",
@@ -22,14 +23,17 @@ const buttonAttrs = ref<TCzFormModel>({
   textAlign: "center",
   textIndent: 0,
   boxSizing: "border-box",
-  paddingTop: 0,
-  paddingRight: 0,
-  paddingBottom: 0,
-  paddingLeft: 0,
-  marginTop: 0,
-  marginRight: 0,
-  marginBottom: 0,
-  marginLeft: 0,
+  padding: 5,
+  margin: 20,
+
+  // paddingTop: 0,
+  // paddingRight: 0,
+  // paddingBottom: 0,
+  // paddingLeft: 0,
+  // marginTop: 0,
+  // marginRight: 0,
+  // marginBottom: 0,
+  // marginLeft: 0,
   alignItems: "start",
   cursor: "pointer",
 });
@@ -59,17 +63,10 @@ const buttonStyle = computed(() => {
     margin,
   };
 });
-
-const turnPx = (num?: string | number) => {
-  if (isNaN(Number(num))) {
-    return num;
-  }
-  return num + "px";
-};
 </script>
 
 <template>
-  <div class="button-style-container">
+  <div class="button-style-container component-style-container">
     <div class="left-container">
       <button :style="buttonStyle">按钮样式</button>
     </div>
@@ -79,20 +76,4 @@ const turnPx = (num?: string | number) => {
   </div>
 </template>
 
-<style lang="scss" scoped>
-.button-style-container {
-  flex: 1;
-  display: flex;
-  overflow: hidden;
-  .left-container {
-    margin-right: auto;
-  }
-  .right-container {
-    width: 30%;
-    height: 100%;
-    padding: 20px;
-    border-left: 1px solid #c6dfc8;
-    overflow: auto;
-  }
-}
-</style>
+<style lang="scss" scoped></style>

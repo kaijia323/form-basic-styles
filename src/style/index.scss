@@ -1,0 +1,21 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.component-style-container {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+  .left-container {
+    margin-right: auto;
+  }
+  .right-container {
+    width: 30%;
+    height: 100%;
+    padding: 20px;
+    border-left: 1px solid #c6dfc8;
+    overflow: auto;
+  }
+}
