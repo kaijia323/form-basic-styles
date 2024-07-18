@@ -21,25 +21,30 @@ import css from "highlight.js/lib/languages/css";
 import "highlight.js/styles/atom-one-dark.css";
 
 hljs.registerLanguage("css", css);
-const props = defineProps<{
-  style: string;
-  element: string;
-}>();
+
+const styles = ref("");
 
 const isOver = ref(false);
 const codeContainerRef = ref<HTMLDivElement>();
 const preRef = ref<HTMLSpanElement>();
 
 const getHighlightCode = computed(() => {
-  console.log(props, "props");
-  let codeBlock = `${props.element} { \n  `;
-  if (props.style) {
-    const _style = props.style.replace(/;/g, ";\n ");
+  let codeBlock = `.basic-form { \n  `;
+  if (styles.value) {
+    const _style = styles.value.replace(/;/g, ";\n ");
     codeBlock += _style + "\n";
   }
   codeBlock += "}";
+
   return hljs.highlightAuto(codeBlock).value;
 });
+
+const getStyleContent = () => {
+  nextTick(() => {
+    const ele = document.querySelector(".basic-form") as HTMLElement;
+    styles.value = ele.style.cssText;
+  });
+};
 
 const onCopyCode = () => {
   // navigator.clipboard.writeText(getHighlightCode.value);
@@ -64,6 +69,7 @@ const onCopyCode = () => {
 };
 
 onMounted(() => {
+  getStyleContent();
   if (codeContainerRef.value) {
     codeContainerRef.value.addEventListener("mouseenter", () => {
       isOver.value = true;

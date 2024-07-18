@@ -233,7 +233,6 @@
           :key="index"
           :label="opt"
           :value="opt"
-          @click="console.log(opt)"
         ></el-option>
       </el-select>
     </el-form-item>
@@ -340,19 +339,19 @@ const attrsObjKeys = ref<string[]>([]);
 
 watch(
   () => attrsObj.value,
-  (val) => {
+  val => {
     if (val) {
       attrsObjKeys.value = Object.keys(val);
       if (attrsObjKeys.value.includes("padding")) {
         ["paddingTop", "paddingRight", "paddingBottom", "paddingLeft"].forEach(
-          (key) => {
+          key => {
             attrsObj.value[key] = attrsObj.value.padding;
           }
         );
       }
       if (attrsObjKeys.value.includes("margin")) {
         ["marginTop", "marginRight", "marginBottom", "marginLeft"].forEach(
-          (key) => {
+          key => {
             attrsObj.value[key] = attrsObj.value.margin;
           }
         );

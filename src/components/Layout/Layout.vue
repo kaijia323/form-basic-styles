@@ -11,34 +11,35 @@
           class="ele-style-container"
         ></component>
       </router-view>
-      <CodeDisplay
-        :style="getComponentInfo.style"
-        :element="getComponentInfo.element"
-      ></CodeDisplay>
+      <CodeDisplay :key="codeKey"></CodeDisplay>
     </el-main>
     <el-aside class="config-aside">
       <el-scrollbar>
-        <CzForm v-model="getComponentInfo.attrs"></CzForm>
+        <CzForm v-model="attrs"></CzForm>
       </el-scrollbar>
     </el-aside>
   </div>
 </template>
 
 <script lang="ts" setup>
-// import CzForm from "@/components/czForm/index.vue";
-// import ASideMenus from "@/components/ASideMenus/ASideMenus.vue";
+import CzForm from "@/components/czForm/czForm.vue";
+import ASideMenus from "@/components/ASideMenus/ASideMenus.vue";
 import type { TElementAttrs } from "@/components/czForm/data";
 
 const componentRef = ref<{
   attrs?: TElementAttrs;
-  element: string;
-  style: string;
 } | null>(null);
 
-const getComponentInfo = computed(() => {
-  const { attrs, element = "", style = "" } = componentRef.value || {};
-  return { attrs, element, style };
-});
+const attrs = computed(() => componentRef.value?.attrs || {});
+const codeKey = ref(0);
+
+watch(
+  attrs,
+  () => {
+    codeKey.value = Date.now();
+  },
+  { deep: true }
+);
 </script>
 
 <style lang="scss" scoped>
