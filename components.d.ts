@@ -12,6 +12,7 @@ declare module 'vue' {
     CzForm: typeof import('./src/components/czForm/czForm.vue')['default']
     CzInputNumber: typeof import('./src/components/CzInputNumber/index.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
+    ElButton: typeof import('element-plus/es')['ElButton']
     ElCheckbox: typeof import('element-plus/es')['ElCheckbox']
     ElColorPicker: typeof import('element-plus/es')['ElColorPicker']
     ElForm: typeof import('element-plus/es')['ElForm']
