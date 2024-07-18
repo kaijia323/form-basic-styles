@@ -22,7 +22,7 @@ import "highlight.js/styles/atom-one-dark.css";
 
 hljs.registerLanguage("css", css);
 const props = defineProps<{
-  styles: Record<string, any>;
+  style: string;
   element: string;
 }>();
 
@@ -31,14 +31,13 @@ const codeContainerRef = ref<HTMLDivElement>();
 const preRef = ref<HTMLSpanElement>();
 
 const getHighlightCode = computed(() => {
-  let codeBlock = `${props.element} { \n`;
-  if (props.styles) {
-    for (let key in props.styles) {
-      const _key = key.replace(/([A-Z])/g, "-$1").toLowerCase();
-      codeBlock += `  ${_key}: ${props.styles[key]};\n`;
-    }
-    codeBlock += "}";
+  console.log(props, "props");
+  let codeBlock = `${props.element} { \n  `;
+  if (props.style) {
+    const _style = props.style.replace(/;/g, ";\n ");
+    codeBlock += _style + "\n";
   }
+  codeBlock += "}";
   return hljs.highlightAuto(codeBlock).value;
 });
 
