@@ -1,0 +1,35 @@
+.code-container {
+  position: relative;
+  background: #090300;
+  padding: 20px;
+  max-height: 300px;
+  overflow: auto;
+  // .operation {
+  //   height: 20px;
+  // }
+  .operation {
+    position: absolute;
+    top: 8px;
+    right: 20px;
+    color: #a5a2a2;
+
+    .copy {
+      color: #a5a2a2;
+      cursor: pointer;
+      // opacity: 0;
+    }
+
+    .box-show {
+      display: block;
+    }
+
+    .box-hidden {
+      display: none;
+    }
+  }
+
+  pre {
+    color: #a5a2a2;
+    // background: #090300;
+  }
+}

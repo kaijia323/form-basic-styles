@@ -94,6 +94,40 @@ export const cursorOptions = [
   "zoom-out",
 ];
 
+export const fontFamilyOptions = [
+  "serif",
+  "sans-serif",
+  "monospace",
+  "cursive",
+  "fantasy",
+  "system-ui",
+  "ui-serif",
+  "ui-sans-serif",
+  "ui-monospace",
+  "ui-rounded",
+  "emoji",
+  "math",
+  "fangsong",
+];
+
+export const textDecorationStyleOptions = [
+  "solid",
+  "double",
+  "dotted",
+  "dashed",
+  "wavy",
+];
+
+export const textDecorationLineOptions = [
+  "none",
+  "underline",
+  "overline",
+  "line-through",
+  "blink",
+  "underline overline",
+  "overline underline line-through",
+];
+
 export type TElementAttrs = {
   boxSizing?: string;
   width?: number;

@@ -8,6 +8,7 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     ASideMenus: typeof import('./src/components/ASideMenus/ASideMenus.vue')['default']
+    CodeDisplay: typeof import('./src/components/CodeDisplay/codeDisplay.vue')['default']
     CzForm: typeof import('./src/components/czForm/czForm.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
     ElCheckbox: typeof import('element-plus/es')['ElCheckbox']

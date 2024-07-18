@@ -16,6 +16,15 @@ export const routes: RouteRecordRaw[] = [
           menuTitle: "按钮 Button",
         },
       },
+      {
+        path: "paragraph",
+        name: "Paragraph",
+        component: () => import("../views/paragraph/index.vue"),
+        meta: {
+          menuType: "MENU",
+          menuTitle: "段落 Paragraph",
+        },
+      },
     ],
   },
 ];

@@ -3,7 +3,7 @@
     <el-aside class="cz-aside">
       <ASideMenus></ASideMenus>
     </el-aside>
-    <el-main>
+    <el-main class="cz-main">
       <router-view v-slot="{ Component }">
         <component
           ref="componentRef"
