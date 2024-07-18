@@ -15,9 +15,8 @@ export const extractUnlessAttr = (attrObj: TElementAttrs) => {
   let newAttrObj = cloneDeep(attrObj);
 
   // Layout
-  ["width", "height", "lineHeight"].forEach((key) => {
+  ["width", "height", "lineHeight"].forEach(key => {
     if (newAttrObj.hasOwnProperty(key)) {
-      console.log(newAttrObj[key]);
       newAttrObj[key] = turnUnit(newAttrObj[key]);
     }
   });
@@ -87,7 +86,7 @@ export const extractUnlessAttr = (attrObj: TElementAttrs) => {
   }
 
   // Text
-  ["fontWeight", "fontStyle"].forEach((key) => {
+  ["fontWeight", "fontStyle"].forEach(key => {
     if (newAttrObj.hasOwnProperty(key)) {
       ["normal", "none"].includes(newAttrObj[key]) && delete newAttrObj[key];
     }
