@@ -10,6 +10,7 @@ declare module 'vue' {
     ASideMenus: typeof import('./src/components/ASideMenus/ASideMenus.vue')['default']
     CodeDisplay: typeof import('./src/components/CodeDisplay/codeDisplay.vue')['default']
     CzForm: typeof import('./src/components/czForm/czForm.vue')['default']
+    CzInputNumber: typeof import('./src/components/CzInputNumber/index.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
     ElCheckbox: typeof import('element-plus/es')['ElCheckbox']
     ElColorPicker: typeof import('element-plus/es')['ElColorPicker']
