@@ -19,6 +19,7 @@
   "devDependencies": {
     "@types/node": "^20.14.11",
     "@vitejs/plugin-vue": "^5.0.5",
+    "@vitejs/plugin-vue-jsx": "^4.0.0",
     "sass": "^1.77.8",
     "typescript": "5.2.2",
     "unplugin-auto-import": "^0.18.0",
