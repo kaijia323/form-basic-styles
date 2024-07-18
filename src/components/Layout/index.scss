@@ -13,14 +13,19 @@
     }
   }
 
-  .ele-style-container {
-    flex: 1;
+  .cz-main {
     display: flex;
-    overflow: hidden;
+    .ele-style-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+      overflow: hidden;
+    }
   }
 
   .config-aside {
-    width: 420px;
+    width: 450px;
     border-left: 1px solid var(--el-menu-border-color);
   }
 }

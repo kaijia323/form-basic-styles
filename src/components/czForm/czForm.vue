@@ -29,6 +29,20 @@
       </el-select>
     </el-form-item>
     <el-form-item
+      v-if="attrsObjKeys.includes('alignSelf')"
+      label="自身对齐方式"
+      prop="alignSelf"
+    >
+      <el-select v-model="attrsObj.alignSelf" style="width: 50%">
+        <el-option
+          v-for="opt in alignItemsOptions"
+          :key="opt"
+          :value="opt"
+          :label="opt"
+        ></el-option>
+      </el-select>
+    </el-form-item>
+    <el-form-item
       v-if="attrsObjKeys.includes('width')"
       label="宽度"
       prop="width"
@@ -63,11 +77,44 @@
       <el-input-number v-model="attrsObj.marginLeft" :min="0" />
     </el-form-item>
     <el-form-item
+      v-if="attrsObjKeys.includes('direction')"
+      label="文本方向"
+      prop="direction"
+    >
+      <el-radio-group v-model="attrsObj.direction">
+        <el-radio label="ltr" value="ltr"></el-radio>
+        <el-radio label="rtl" value="rtl"></el-radio>
+      </el-radio-group>
+    </el-form-item>
+    <el-form-item
+      v-if="attrsObjKeys.includes('fontFamily')"
+      label="通用字体"
+      prop="fontFamily"
+    >
+      <el-select v-model="attrsObj.fontFamily" style="width: 50%">
+        <el-option
+          v-for="opt in fontFamilyOptions"
+          :key="opt"
+          :value="opt"
+        ></el-option>
+      </el-select>
+    </el-form-item>
+    <el-form-item
       v-if="attrsObjKeys.includes('fontSize')"
       label="字体大小"
       prop="fontSize"
     >
       <el-input-number v-model="attrsObj.fontSize" :min="12"></el-input-number>
+    </el-form-item>
+    <el-form-item
+      v-if="attrsObjKeys.includes('lineHeight')"
+      label="行高"
+      prop="lineHeight"
+    >
+      <el-input-number
+        v-model="attrsObj.lineHeight"
+        :min="12"
+      ></el-input-number>
     </el-form-item>
     <el-form-item
       v-if="attrsObjKeys.includes('letterSpacing')"
@@ -111,6 +158,70 @@
         ></el-option>
       </el-select>
     </el-form-item>
+    <!-- <el-form-item
+      v-if="attrsObjKeys.includes('textDecorationColor')"
+      label="字体"
+    ></el-form-item> -->
+    <el-form-item
+      v-if="attrsObjKeys.includes('showTextDecoration')"
+      label="是否展示文本修饰"
+    >
+      <el-radio-group v-model="attrsObj.showTextDecoration">
+        <el-radio :label="true">是</el-radio>
+        <el-radio :label="false">否</el-radio>
+      </el-radio-group>
+    </el-form-item>
+
+    <template v-if="attrsObj.showTextDecoration">
+      <el-form-item
+        v-if="attrsObjKeys.includes('textDecorationColor')"
+        label="文本修饰颜色"
+        prop="textDecorationColor"
+      >
+        <el-color-picker v-model="attrsObj.textDecorationColor" />
+      </el-form-item>
+      <el-form-item
+        v-if="attrsObjKeys.includes('textDecorationLine')"
+        label="文本修饰线"
+        prop="textDecorationLine"
+      >
+        <el-select v-model="attrsObj.textDecorationLine" style="width: 50%">
+          <el-option
+            v-for="(opt, index) in textDecorationLineOptions"
+            :key="index"
+            :label="opt"
+            :value="opt"
+          ></el-option>
+        </el-select>
+      </el-form-item>
+
+      <el-form-item
+        v-if="attrsObjKeys.includes('textDecorationStyle')"
+        label="文本修饰样式"
+        prop="textDecorationStyle"
+      >
+        <el-select v-model="attrsObj.textDecorationStyle" style="width: 50%">
+          <el-option
+            v-for="(opt, index) in textDecorationStyleOptions"
+            :key="index"
+            :label="opt"
+            :value="opt"
+          ></el-option>
+        </el-select>
+      </el-form-item>
+
+      <el-form-item
+        v-if="attrsObjKeys.includes('textDecorationThick')"
+        prop="textDecorationThick"
+        label="文本修饰线厚度"
+      >
+        <el-input-number
+          v-model="attrsObj.textDecorationThick"
+          :min="0"
+        ></el-input-number>
+      </el-form-item>
+    </template>
+
     <el-form-item
       v-if="attrsObjKeys.includes('textAlign')"
       label="字体对齐"
@@ -215,6 +326,9 @@ import {
   boxSizingOptions,
   alignItemsOptions,
   cursorOptions,
+  fontFamilyOptions,
+  textDecorationLineOptions,
+  textDecorationStyleOptions,
 } from "./data";
 
 const attrsObj: TElementAttrs = defineModel();

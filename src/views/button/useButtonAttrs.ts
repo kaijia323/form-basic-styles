@@ -1,74 +1,68 @@
 import type { TElementAttrs } from "@/components/czForm/data";
+import { extractUnlessAttr } from "@/utils";
 export const useButtonAttrs = () => {
   const attrs = ref<TElementAttrs>({
     // width: "fit-content",
     // height: "fit-content",
+    boxSizing: "content-box",
     width: 80,
     height: 30,
-    showBorder: false,
-    color: "#fff",
-    backgroundColor: "#c6dfc8",
-    borderWidth: 1,
-    borderStyle: "none",
-    borderColor: "#000",
-    borderRadius: 0,
+    padding: 5,
+    margin: 5,
+    alignItems: "start",
     fontSize: 14,
     fontWeight: "normal",
     fontStyle: "normal",
     letterSpacing: 0,
     textAlign: "center",
     textIndent: 0,
-    boxSizing: "content-box",
-    padding: 5,
-    margin: 5,
-    alignItems: "start",
+    color: "#fff",
+    backgroundColor: "#c6dfc8",
+    showBorder: false,
+    borderWidth: 0,
+    borderStyle: "none",
+    borderColor: "#000",
+    borderRadius: 0,
     cursor: "pointer",
   });
 
   const styles = computed<Record<string, any>>(() => {
-    // 边框样式
-    let border = "none";
-    if (attrs.value.showBorder) {
-      border = `${turnPx(attrs.value.borderWidth)} ${attrs.value.borderStyle} ${
-        attrs.value.borderColor
-      }`;
-    }
-    // 内边距
-    const padding = `${turnPx(attrs.value?.paddingTop)} ${turnPx(
-      attrs.value?.paddingRight
-    )} ${turnPx(attrs.value?.paddingBottom)} ${turnPx(
-      attrs.value?.paddingLeft
-    )}`;
+    // // 边框样式
+    // let border = "none";
+    // if (attrs.value.showBorder) {
+    //   border = `${turnUnit(attrs.value.borderWidth)} ${attrs.value.borderStyle} ${
+    //     attrs.value.borderColor
+    //   }`;
+    // }
+    // // 内边距
+    // const padding = `${turnUnit(attrs.value?.paddingTop)} ${turnUnit(
+    //   attrs.value?.paddingRight
+    // )} ${turnUnit(attrs.value?.paddingBottom)} ${turnUnit(
+    //   attrs.value?.paddingLeft
+    // )}`;
 
-    // 外边距
-    const margin = `${turnPx(attrs.value?.marginTop)} ${turnPx(
-      attrs.value?.marginRight
-    )} ${turnPx(attrs.value?.marginBottom)} ${turnPx(attrs.value?.marginLeft)}`;
+    // // 外边距
+    // const margin = `${turnUnit(attrs.value?.marginTop)} ${turnUnit(
+    //   attrs.value?.marginRight
+    // )} ${turnUnit(attrs.value?.marginBottom)} ${turnUnit(attrs.value?.marginLeft)}`;
 
-    return {
-      ...attrs.value,
-      width: turnPx(attrs.value.width),
-      height: turnPx(attrs.value.height),
-      borderRadius: turnPx(attrs.value.borderRadius),
-      fontSize: turnPx(attrs.value.fontSize),
-      letterSpacing: turnPx(attrs.value.letterSpacing),
-      textIndent: turnPx(attrs.value.textIndent),
-      border,
-      padding,
-      margin,
-    };
+    // return {
+    //   ...attrs.value,
+    //   width: turnUnit(attrs.value.width),
+    //   height: turnUnit(attrs.value.height),
+    //   borderRadius: turnUnit(attrs.value.borderRadius),
+    //   fontSize: turnUnit(attrs.value.fontSize),
+    //   letterSpacing: turnUnit(attrs.value.letterSpacing),
+    //   textIndent: turnUnit(attrs.value.textIndent),
+    //   border,
+    //   padding,
+    //   margin,
+    // };
+    return extractUnlessAttr(attrs.value);
   });
-
-  const turnPx = (num?: string | number) => {
-    if (isNaN(Number(num))) {
-      return num;
-    }
-    return num + "px";
-  };
 
   return {
     attrs,
     styles,
-    turnPx,
   };
 };

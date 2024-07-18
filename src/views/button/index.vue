@@ -11,6 +11,8 @@ defineExpose({
 <template>
   <div class="button-style-container">
     <button :style="styles">按钮样式</button>
+
+    <CodeDisplay element="button" :styles="styles"></CodeDisplay>
   </div>
 </template>
 
