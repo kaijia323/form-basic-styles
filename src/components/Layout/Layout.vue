@@ -5,13 +5,9 @@
     </el-aside>
     <el-main class="cz-main">
       <router-view v-slot="{ Component }">
-        <component
-          ref="componentRef"
-          :is="Component"
-          class="ele-style-container"
-        ></component>
+        <component ref="componentRef" :is="Component"></component>
       </router-view>
-      <CodeDisplay :key="codeKey"></CodeDisplay>
+      <CodeDisplay :key="codeKey.toString()"></CodeDisplay>
     </el-main>
     <el-aside class="config-aside">
       <el-scrollbar>

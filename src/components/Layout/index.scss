@@ -16,13 +16,9 @@
   .cz-main {
     display: flex;
     flex-direction: column;
-    .ele-style-container {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 50px;
-      overflow: auto;
-    }
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
   }
 
   .config-aside {
