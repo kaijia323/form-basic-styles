@@ -5,6 +5,7 @@ import Components from "unplugin-vue-components/vite";
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 import { resolve } from "node:path";
 import vueJsx from "@vitejs/plugin-vue-jsx";
+import ElementPlus from "unplugin-element-plus/vite";
 
 const __dirname = resolve();
 
@@ -19,6 +20,9 @@ export default defineConfig({
     }),
     Components({
       resolvers: [ElementPlusResolver()],
+    }),
+    ElementPlus({
+      // ...
     }),
   ],
   server: {
