@@ -15,12 +15,13 @@
 
   .cz-main {
     display: flex;
+    flex-direction: column;
     .ele-style-container {
       flex: 1;
       display: flex;
       flex-direction: column;
       gap: 50px;
-      overflow: hidden;
+      overflow: auto;
     }
   }
 

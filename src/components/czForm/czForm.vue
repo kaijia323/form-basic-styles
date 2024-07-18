@@ -172,7 +172,7 @@
       </el-radio-group>
     </el-form-item>
 
-    <template v-if="attrsObj.showTextDecoration">
+    <template v-if="attrsObj?.showTextDecoration">
       <el-form-item
         v-if="attrsObjKeys.includes('textDecorationColor')"
         label="文本修饰颜色"
@@ -244,11 +244,15 @@
     >
       <el-color-picker v-model="attrsObj.color" />
     </el-form-item>
-    <el-form-item label="是否显示边框" prop="border">
+    <el-form-item
+      v-if="attrsObjKeys.includes('showBorder')"
+      label="是否显示边框"
+      prop="border"
+    >
       <el-checkbox v-model="attrsObj.showBorder"></el-checkbox>
     </el-form-item>
     <!-- 边框样式 -->
-    <template v-if="attrsObj.showBorder">
+    <template v-if="attrsObj?.showBorder">
       <el-form-item
         v-if="attrsObjKeys.includes('borderWidth')"
         label="边框宽度"

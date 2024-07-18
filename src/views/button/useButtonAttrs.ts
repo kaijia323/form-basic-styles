@@ -1,5 +1,5 @@
 import type { TElementAttrs } from "@/components/czForm/data";
-import { extractUnlessAttr } from "@/utils";
+import { extractUnlessAttr, turnUnit } from "@/utils";
 export const useButtonAttrs = () => {
   const attrs = ref<TElementAttrs>({
     // width: "fit-content",
@@ -30,9 +30,9 @@ export const useButtonAttrs = () => {
     // // 边框样式
     // let border = "none";
     // if (attrs.value.showBorder) {
-    //   border = `${turnUnit(attrs.value.borderWidth)} ${attrs.value.borderStyle} ${
-    //     attrs.value.borderColor
-    //   }`;
+    //   border = `${turnUnit(attrs.value.borderWidth)} ${
+    //     attrs.value.borderStyle
+    //   } ${attrs.value.borderColor}`;
     // }
     // // 内边距
     // const padding = `${turnUnit(attrs.value?.paddingTop)} ${turnUnit(
@@ -40,21 +40,21 @@ export const useButtonAttrs = () => {
     // )} ${turnUnit(attrs.value?.paddingBottom)} ${turnUnit(
     //   attrs.value?.paddingLeft
     // )}`;
-
     // // 外边距
     // const margin = `${turnUnit(attrs.value?.marginTop)} ${turnUnit(
     //   attrs.value?.marginRight
-    // )} ${turnUnit(attrs.value?.marginBottom)} ${turnUnit(attrs.value?.marginLeft)}`;
-
+    // )} ${turnUnit(attrs.value?.marginBottom)} ${turnUnit(
+    //   attrs.value?.marginLeft
+    // )}`;
     // return {
     //   ...attrs.value,
     //   width: turnUnit(attrs.value.width),
     //   height: turnUnit(attrs.value.height),
-    //   borderRadius: turnUnit(attrs.value.borderRadius),
     //   fontSize: turnUnit(attrs.value.fontSize),
     //   letterSpacing: turnUnit(attrs.value.letterSpacing),
-    //   textIndent: turnUnit(attrs.value.textIndent),
+    //   textIndent: turnUnit(attrs.value.textIndent, "em"),
     //   border,
+    //   borderRadius: turnUnit(attrs.value.borderRadius),
     //   padding,
     //   margin,
     // };

@@ -11,10 +11,14 @@
           class="ele-style-container"
         ></component>
       </router-view>
+      <CodeDisplay
+        :style="getComponentInfo.style"
+        :element="getComponentInfo.element"
+      ></CodeDisplay>
     </el-main>
     <el-aside class="config-aside">
       <el-scrollbar>
-        <CzForm v-model="attrs"></CzForm>
+        <CzForm v-model="getComponentInfo.attrs"></CzForm>
       </el-scrollbar>
     </el-aside>
   </div>
@@ -27,9 +31,14 @@ import type { TElementAttrs } from "@/components/czForm/data";
 
 const componentRef = ref<{
   attrs?: TElementAttrs;
+  element: string;
+  style: string;
 } | null>(null);
 
-const attrs = computed(() => componentRef.value?.attrs || {});
+const getComponentInfo = computed(() => {
+  const { attrs, element = "", style = "" } = componentRef.value || {};
+  return { attrs, element, style };
+});
 </script>
 
 <style lang="scss" scoped>
