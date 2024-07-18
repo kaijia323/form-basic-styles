@@ -334,6 +334,8 @@ import {
   textDecorationStyleOptions,
 } from "./data";
 
+// console.log(formComponents.ElInputNumber);
+
 const attrsObj: TElementAttrs = defineModel();
 const attrsObjKeys = ref<string[]>([]);
 
