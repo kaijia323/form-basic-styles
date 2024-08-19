@@ -42,7 +42,7 @@ const getHighlightCode = computed(() => {
 const getStyleContent = () => {
   nextTick(() => {
     const ele = document.querySelector(".basic-form") as HTMLElement;
-    styles.value = ele.style.cssText;
+    styles.value = ele?.style.cssText;
   });
 };
 
