@@ -26,7 +26,10 @@ const componentRef = ref<{
   attrs?: TElementAttrs;
 } | null>(null);
 
-const attrs = computed(() => componentRef.value?.attrs || {});
+const attrs = computed(() => {
+  console.log(componentRef.value?.attrs, "123");
+  return componentRef.value?.attrs || {};
+});
 const codeKey = ref(0);
 
 watch(

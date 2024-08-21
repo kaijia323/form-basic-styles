@@ -13,6 +13,7 @@ export const useButtonAttrs = () => {
     fontSize: 14,
     fontWeight: "normal",
     fontStyle: "normal",
+    lineHeight: 20,
     letterSpacing: 0,
     textAlign: "center",
     textIndent: 0,
@@ -28,36 +29,7 @@ export const useButtonAttrs = () => {
 
   const styles = computed<Record<string, any>>(() => {
     // // 边框样式
-    // let border = "none";
-    // if (attrs.value.showBorder) {
-    //   border = `${turnUnit(attrs.value.borderWidth)} ${
-    //     attrs.value.borderStyle
-    //   } ${attrs.value.borderColor}`;
-    // }
-    // // 内边距
-    // const padding = `${turnUnit(attrs.value?.paddingTop)} ${turnUnit(
-    //   attrs.value?.paddingRight
-    // )} ${turnUnit(attrs.value?.paddingBottom)} ${turnUnit(
-    //   attrs.value?.paddingLeft
-    // )}`;
-    // // 外边距
-    // const margin = `${turnUnit(attrs.value?.marginTop)} ${turnUnit(
-    //   attrs.value?.marginRight
-    // )} ${turnUnit(attrs.value?.marginBottom)} ${turnUnit(
-    //   attrs.value?.marginLeft
-    // )}`;
-    // return {
-    //   ...attrs.value,
-    //   width: turnUnit(attrs.value.width),
-    //   height: turnUnit(attrs.value.height),
-    //   fontSize: turnUnit(attrs.value.fontSize),
-    //   letterSpacing: turnUnit(attrs.value.letterSpacing),
-    //   textIndent: turnUnit(attrs.value.textIndent, "em"),
-    //   border,
-    //   borderRadius: turnUnit(attrs.value.borderRadius),
-    //   padding,
-    //   margin,
-    // };
+
     return extractUnlessAttr(attrs.value);
   });
 

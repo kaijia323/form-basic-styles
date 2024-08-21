@@ -14,8 +14,14 @@ export const turnUnit = (num?: string | number, unit = "px") => {
 export const extractUnlessAttr = (attrObj: TElementAttrs) => {
   let newAttrObj = cloneDeep(attrObj);
 
-  // Layout
-  ["width", "height", "lineHeight"].forEach(key => {
+  [
+    // Layout
+    "width",
+    "height",
+    "lineHeight",
+    "fontSize",
+    "borderRadius",
+  ].forEach((key) => {
     if (newAttrObj.hasOwnProperty(key)) {
       newAttrObj[key] = turnUnit(newAttrObj[key]);
     }
@@ -63,17 +69,17 @@ export const extractUnlessAttr = (attrObj: TElementAttrs) => {
       marginRight === marginBottom &&
       marginBottom === marginLeft
     ) {
-      newAttrObj.padding = turnUnit(marginTop);
+      newAttrObj.margin = turnUnit(marginTop);
     } else if (marginLeft === marginRight) {
       if (marginTop === marginBottom) {
-        newAttrObj.padding = `${turnUnit(marginTop)} ${turnUnit(marginLeft)}`;
+        newAttrObj.margin = `${turnUnit(marginTop)} ${turnUnit(marginLeft)}`;
       } else {
-        newAttrObj.padding = `${turnUnit(marginTop)} ${turnUnit(
+        newAttrObj.margin = `${turnUnit(marginTop)} ${turnUnit(
           marginLeft
         )} ${turnUnit(marginBottom)}`;
       }
     } else {
-      newAttrObj.padding = `${turnUnit(marginTop)} ${turnUnit(
+      newAttrObj.margin = `${turnUnit(marginTop)} ${turnUnit(
         marginRight
       )} ${turnUnit(marginBottom)} ${turnUnit(marginLeft)}`;
     }
@@ -86,7 +92,7 @@ export const extractUnlessAttr = (attrObj: TElementAttrs) => {
   }
 
   // Text
-  ["fontWeight", "fontStyle"].forEach(key => {
+  ["fontWeight", "fontStyle"].forEach((key) => {
     if (newAttrObj.hasOwnProperty(key)) {
       ["normal", "none"].includes(newAttrObj[key]) && delete newAttrObj[key];
     }
@@ -126,9 +132,8 @@ export const extractUnlessAttr = (attrObj: TElementAttrs) => {
     "showTextDecoration",
     "textDecorationThick",
   ]);
-
   // appearance
-  if (newAttrObj.hasOwnProperty("showBorder") && newAttrObj.showBorder) {
+  if (newAttrObj.hasOwnProperty("border") && newAttrObj.border) {
     newAttrObj.border = `${turnUnit(newAttrObj.borderWidth)} ${
       newAttrObj.borderStyle
     } ${newAttrObj.borderColor}`;

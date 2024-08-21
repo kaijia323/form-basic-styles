@@ -55,6 +55,8 @@ export const alignItemsOptions = [
   "stretch",
 ];
 
+export const directionOptions = ["ltr", "rtl"];
+
 export const cursorOptions = [
   "auto",
   "default",
